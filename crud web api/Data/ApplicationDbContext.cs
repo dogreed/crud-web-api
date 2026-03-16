@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using crud_web_api.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace crud_web_api.Data
 {
@@ -8,5 +9,6 @@ namespace crud_web_api.Data
 		{
 		}
 		 public DbSet<Models.Product> Products { get; set; }
+		public DbSet<Work> Works { get; set; }
 	}
 }
