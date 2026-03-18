@@ -32,7 +32,13 @@ namespace crud_web_api.Controllers
 			{
 				return NotFound();
 			}
-			return Ok(work);
+			var info = new Workdto
+			{
+				Id = work.Id,
+				Title = work.Title,
+				Description = work.Description
+			};
+			return Ok(info);	
 		}
 
 		[HttpPost()]
