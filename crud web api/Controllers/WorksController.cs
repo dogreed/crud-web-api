@@ -42,9 +42,18 @@ namespace crud_web_api.Controllers
 		}
 
 		[HttpPost()]
-		public async Task<IActionResult> createWork(Work work)
+		public async Task<IActionResult> createWork(WorkCreateDto works)
 		{
-			_context.Works.AddAsync(work);
+			var work = new Work
+			{
+				Title = works.Title,
+				Description = works.Description,
+				Assigned_by = works.Assigned_by,
+				Assigned_to = works.Assigned_to,
+				Due_date = works.Due_date
+			};
+			await
+		   _context.Works.AddAsync(work);
 			await _context.SaveChangesAsync();
 			return Ok(work);
 		}
