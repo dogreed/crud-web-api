@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using crud_web_api.Data;
+using crud_web_api.Models;
+using crud_web_api.Services;
+using Mapster;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection.Metadata.Ecma335;
 
@@ -8,23 +12,20 @@ namespace crud_web_api.Controllers
 	[ApiController]
 	public class TaskController : ControllerBase
 	{
-
-		 List<int> numbers = new List<int>
+		private readonly Iwork _work;
+		public TaskController(Iwork work)
 		{
-			1,2,3,4,5,6,7,8,9,10
-		};
+			_work = work;
+		}
 
 		[HttpGet]
-		public  ActionResult<List<int>> GetAllTasks()
+		public IActionResult getTasks()
 		{
-			 return Ok(numbers);
+			var response = _work.getTasks<TaskDto>().Result;
+			return Ok(response); 
 		}
+		
 
-		[HttpPost]
-		public ActionResult<List<int>> CreateTask(int number)
-		{
-			numbers.Add(number);
-			return Ok(numbers);
-		}
+
 	}
 }

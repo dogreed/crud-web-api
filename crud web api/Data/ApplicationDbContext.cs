@@ -10,5 +10,6 @@ namespace crud_web_api.Data
 		}
 		 public DbSet<Models.Product> Products { get; set; }
 		public DbSet<Work> Works { get; set; }
+		public DbSet<Taskcs> Tasks { get; set; }
 	}
 }
