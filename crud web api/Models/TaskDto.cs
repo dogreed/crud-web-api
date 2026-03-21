@@ -13,6 +13,6 @@ namespace crud_web_api.Models
 		public string Description { get; set; }
 
 		public DateTime DueDate { get; set; }
-	
+
 	}
 }
