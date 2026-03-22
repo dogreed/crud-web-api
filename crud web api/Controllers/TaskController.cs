@@ -22,7 +22,7 @@ namespace crud_web_api.Controllers
 		public IActionResult getTasks()
 		{
 			var response = _work.getTasks<TaskDto>().Result;
-			return Ok(response); 
+			return Ok(response);
 		}
 		[HttpPost]
 		public IActionResult createTask(Taskcs task)
@@ -30,7 +30,16 @@ namespace crud_web_api.Controllers
 			var response = _work.createTask<TaskDto>(task).Result;
 			return Ok(response);
 		}
+		[HttpPut("{id}")]
+		public IActionResult updateTask(string id, Taskcs task)
+		{
+			var response = _work.updateTask<TaskDto>(id, task).Result; // would have work if int was id type but since id is string it will not work and return null
+			if (response == null)
+			{
+				return NotFound();
+			}
+			return Ok(response);
 
-
+		}
 	}
 }

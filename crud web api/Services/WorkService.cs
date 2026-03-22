@@ -30,5 +30,21 @@ namespace crud_web_api.Services
 			return response;
 
 		}
+
+		public async Task<List<T>> updateTask<T>(string id, Taskcs task) where T : class
+		{
+			var taskToupdate = await _context.Tasks.FindAsync(id);
+			if (taskToupdate == null)
+			{
+				return null;
+			}
+			taskToupdate.Id = task.Id;
+			taskToupdate.Title = task.Title;
+			taskToupdate.Description = task.Description;
+			taskToupdate.DueDate = task.DueDate;
+			await _context.SaveChangesAsync();
+			var response = taskToupdate.Adapt<List<T>>();
+			return response;
+		}
 	}
 }

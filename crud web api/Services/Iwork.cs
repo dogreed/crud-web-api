@@ -6,5 +6,6 @@ namespace crud_web_api.Services
 	{
 		public Task<List<T>> getTasks<T>() where T : class;
 		public Task<List<T>> createTask<T>(Taskcs task) where T : class;
+		public Task<List<T>> updateTask<T>(string id, Taskcs task) where T : class;
 	}
 }
