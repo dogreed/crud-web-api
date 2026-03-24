@@ -1,6 +1,7 @@
 ﻿using crud_web_api.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 
@@ -38,7 +39,7 @@ namespace crud_web_api.Controllers
 				Title = work.Title,
 				Description = work.Description
 			};
-			return Ok(info);	
+			return Ok(info);
 		}
 
 		[HttpPost()]
@@ -87,6 +88,12 @@ namespace crud_web_api.Controllers
 			await _context.SaveChangesAsync();
 			return Ok();
 
+		}
+		[HttpGet("user/{name}")]
+		public async Task<IActionResult> getWorkByAssignedTo(string name)
+		{
+			var works = await _context.Works.Where(w => w.Assigned_to == name).FirstAsync();
+			return Ok(works);
 		}
 
 	}
