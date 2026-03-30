@@ -27,7 +27,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseMiddleware<crud_web_api.Middleware.RequestLoggingMiddleware>();
 app.MapControllers();
 
 app.Run();
