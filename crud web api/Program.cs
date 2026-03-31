@@ -28,6 +28,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 app.UseMiddleware<crud_web_api.Middleware.RequestLoggingMiddleware>();
+app.UseMiddleware<crud_web_api.Middleware.ExeceptionMiddleware>();
 app.MapControllers();
 
 app.Run();

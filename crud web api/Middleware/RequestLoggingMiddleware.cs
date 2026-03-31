@@ -18,20 +18,19 @@
 			}
 			await _next(context);
 
-			await Herke(context);
 		}
 
 
 
-		public async Task Herke(HttpContext context)
-		{
-			if(context.Request.Path.StartsWithSegments("/api/task"))
-			{
-				// now here logic for checking if user is authenticated or not
-				await context.Response.WriteAsync("Login First");
-				return;
-			}
-		}
+		//public async Task Herke(HttpContext context)
+		//{
+		//	if(context.Request.Path.StartsWithSegments("/api/task"))
+		//	{
+		//		// now here logic for checking if user is authenticated or not
+		//		await context.Response.WriteAsync("Login First");
+		//		return;
+		//	}
+		//}
 
 
 	}
